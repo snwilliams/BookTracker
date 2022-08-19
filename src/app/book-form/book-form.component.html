@@ -25,7 +25,7 @@
 
 <ul class="books">
     <li *ngFor="let book of books">
-        <div class="cover">
+        <div [className]="book.genre">
             <p class="book-title">{{book.title | uppercase}}</p>
             <p class="book-author">{{book.author}}</p>
         </div>
