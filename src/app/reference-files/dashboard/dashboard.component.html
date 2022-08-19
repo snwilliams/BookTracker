@@ -1,0 +1,9 @@
+<h2>Top Books</h2>
+<div class="heroes-menu">
+    <a *ngFor="let book of books"
+    routerLink="/detail/{{book.id}}">
+        {{book.title}}
+    </a>
+</div>
+
+<app-book-search></app-book-search>
