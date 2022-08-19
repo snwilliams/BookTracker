@@ -1,0 +1,37 @@
+<div class="form-group">
+    <label for="Title">Title: </label>
+    <input #title id="book-title" placeholder="Title">
+    <label for="Author">Author: </label>
+    <input #author id="book-author" placeholder="Author">
+    <label for="Genre">Genre: </label>
+    <select #genre>
+        <option *ngFor="let genre of genres" [value]="genre">{{genre}}</option>
+    </select>
+    <label for="Year">Year Published: </label>
+    <input #yearPub id="year-published" placeholder="Year published">
+    <label for="Year">Publisher: </label>
+    <input #publisher id="year-published" placeholder="Publisher">
+
+</div>
+<button class="submitButton" type="button" 
+    (click)="save(
+        title.value,
+        author.value,
+        genre.value,
+        yearPub.value,
+        publisher.value
+        )"
+>SAVE</button>
+
+<ul class="books">
+    <li *ngFor="let book of books">
+        <div class="cover">
+            <p class="book-title">{{book.title | uppercase}}</p>
+            <p class="book-author">{{book.author}}</p>
+        </div>
+        <p>{{book.genre}}</p>
+        <p>{{book.yearPublished}}</p>
+        <p>{{book.publisher}}</p>   
+    </li>
+</ul>
+
