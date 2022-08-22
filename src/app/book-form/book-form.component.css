@@ -1,3 +1,7 @@
+.buttonWrapper {
+  text-align:center;
+}
+
 .submitButton {
     background-color: rgb(182, 121, 42);
     border: none;
@@ -7,6 +11,8 @@
     color: white;
     font-size: 1.5rem;
     font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .submitButton:hover {
@@ -14,13 +20,27 @@
     background-color: rgb(138, 88, 23) ;
 }
 
-input, select {
-    display: block;
-    width: 75%;
-    padding: .5rem;
-    margin: 1rem 0;
-    box-sizing: border-box;
-  }
+.form-group {
+  display: grid;
+  grid-template-columns: 25% 75%;
+  grid-gap: 5px;
+  padding-bottom: 10px;
+}
+
+.form-group label {
+  text-align: right;
+  line-height: 1.5;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+input, select, ngb-rating {
+  padding: .5rem;
+  box-sizing: border-box;
+  width: 75%;
+}
 
   li {
     text-decoration: none;
@@ -73,5 +93,18 @@ input, select {
 
   .book-author {
     font-size: 1.5rem;
-    padding-bottom:10px;
+  }
+
+  ngb-rating {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .notfilled {
+    font-size: 60px;
+  }
+
+  .filled {
+    color: #ffc107;
+    font-size: 60px;
   }

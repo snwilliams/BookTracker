@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BookFormComponent } from './book-form/book-form.component';
 import { Book } from './book';
 import { BookListComponent } from './book-list/book-list.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { BookListComponent } from './book-list/book-list.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

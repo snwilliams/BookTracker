@@ -5,6 +5,7 @@ export class Book {
         public author: string,
         public genre: string,
         public yearPublished: number,
-        public publisher: string
+        public publisher: string,
+        public rating: number
     ){}
 }

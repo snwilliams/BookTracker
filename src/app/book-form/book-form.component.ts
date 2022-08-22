@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { Book } from '../book';
+import { BookService } from '../book.service';
 
 @Component({
   selector: 'app-book-form',
@@ -8,22 +10,33 @@ import { Book } from '../book';
 })
 export class BookFormComponent implements OnInit {
 
+  starRating = 0;
+
   genres=['Action', 'Autobiography', 'Fantasy', 'Fiction', 'History', 'Horror', 'Sci-Fi', 'Non-Fiction'];
 
-  defaultBook=new Book(1, 'White Fang', 'Jack London', 'Fiction', 1975, 'Random House');
-  defaultBook2=new Book(2, 'Call of the Wild', 'Jack London', 'Fiction', 1976, 'Random House');
-  books: Book[] = [this.defaultBook, this.defaultBook2];
+  books: Book[]=[];
 
-  constructor() { }
+  constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
+    this.getBooks();
   }
 
-  save(title: string, author: string, genre: string, yearPub: string, publisher: string) {
+  getBooks(): void {
+    this.bookService.getBooks()
+      .subscribe(books => this.books = books);
+  }
 
-    const newBook = new Book(1, title, author, genre, Number(yearPub), publisher);
+  save(title: string, author: string, genre: string, yearPub: string, publisher: string, rating: number): void {
+    const newBook = new Book(this.books.length+1, title, author, genre, Number(yearPub), publisher, rating);
     console.log(newBook);
-    this.books.push(newBook);
+    //this.books.push(newBook);
+    this.bookService.add(newBook)
+      .subscribe(books => this.books = books);
+  }
+
+  delete(book: Book){
+    this.books = this.books.filter(b => b !== book);
   }
 
 }
